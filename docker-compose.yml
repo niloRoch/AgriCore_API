@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY:-demo_key}
+      - NASA_API_KEY=${NASA_API_KEY:-DEMO_KEY}
+    volumes:
+      - ./backend:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  dashboard:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    environment:
+      - API_BASE_URL=http://api:8000
+    volumes:
+      - ./frontend:/app
+    command: streamlit run streamlit_app.py --server.address 0.0.0.0 --server.port 8501
+
+networks:
+  default:
+    driver: bridge
