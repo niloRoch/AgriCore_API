@@ -5,7 +5,7 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28.1-ff6b6b.svg)
 ![Docker](https://img.shields.io/badge/Docker-ready-0db7ed.svg)
 
-Uma API completa para automação agrícola com dashboard interativo, desenvolvida com FastAPI e Streamlit.
+API completa para automação agrícola com dashboard interativo, desenvolvida com FastAPI e Streamlit.
 
 ## 🚀 Características
 
